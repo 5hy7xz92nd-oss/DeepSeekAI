@@ -7,7 +7,7 @@ import { getPopupElement, getAiResponseElement, getAiResponseContainer } from '.
 
 export function createIcon(x, y) {
   const icon = document.createElement("img");
-  icon.src = chrome.runtime.getURL("icons/icon24.png");
+  icon.src = chrome.runtime.getURL("icons/icon32.png");
   Object.assign(icon.style, {
     position: "fixed",
     cursor: "pointer",
@@ -439,7 +439,7 @@ export function createMinimizeIcon(restoreCallback, initialPosition) {
 
   // 添加图标图片
   const img = document.createElement('img');
-  img.src = chrome.runtime.getURL('icons/icon48.png');
+  img.src = chrome.runtime.getURL('icons/icon32.png');
   Object.assign(img.style, {
     width: '32px',
     height: '32px',

@@ -95,15 +95,14 @@ export class ModelManager {
 
     const addButton = this.uiManager.elements.modelPickerAddButton;
     const footer = this.uiManager.elements.modelPickerFooter;
-    const isDeepSeek = provider === "deepseek";
 
     if (footer) {
-      footer.hidden = isDeepSeek;
+      footer.hidden = false;
     }
 
     if (addButton) {
-      addButton.hidden = isDeepSeek;
-      addButton.disabled = isDeepSeek;
+      addButton.hidden = false;
+      addButton.disabled = false;
     }
 
     const searchInput = this.uiManager.elements.modelPickerSearch;
@@ -293,20 +292,28 @@ export class ModelManager {
     checkmark.className = "model-picker-check";
     checkmark.textContent = "✓";
 
-    const deleteButton = document.createElement("button");
-    deleteButton.type = "button";
-    deleteButton.className = "model-picker-icon-button";
-    deleteButton.title = this.i18nManager.getTranslation("deleteModelBtnTitle");
-    deleteButton.setAttribute("aria-label", this.i18nManager.getTranslation("deleteModelBtnTitle"));
-    deleteButton.innerHTML =
-      '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"/></svg>';
-    deleteButton.addEventListener("click", (event) => {
-      event.stopPropagation();
-      this.closeModelPicker();
-      this.showDeleteModelDialog(provider, option.value, option.label);
-    });
+    actions.appendChild(checkmark);
 
-    actions.append(checkmark, deleteButton);
+    const isDeepSeekDefaultModel =
+      provider === "deepseek" &&
+      this.providerManager.isDefaultModel(provider, option.value);
+
+    if (!isDeepSeekDefaultModel) {
+      const deleteButton = document.createElement("button");
+      deleteButton.type = "button";
+      deleteButton.className = "model-picker-icon-button";
+      deleteButton.title = this.i18nManager.getTranslation("deleteModelBtnTitle");
+      deleteButton.setAttribute("aria-label", this.i18nManager.getTranslation("deleteModelBtnTitle"));
+      deleteButton.innerHTML =
+        '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"/></svg>';
+      deleteButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        this.closeModelPicker();
+        this.showDeleteModelDialog(provider, option.value, option.label);
+      });
+      actions.appendChild(deleteButton);
+    }
+
     item.append(content, actions);
 
     return item;
@@ -429,11 +436,6 @@ export class ModelManager {
   // 显示添加模型弹窗
   showAddModelDialog() {
     const provider = document.getElementById('provider')?.value;
-
-    // DeepSeek不需要添加自定义模型，直接返回
-    if (provider === 'deepseek') {
-      return;
-    }
 
     this.closeModelPicker();
 

@@ -694,7 +694,7 @@ export async function createQuickActionButtons(
   const brandAvatar = document.createElement("div");
   brandAvatar.className = "brand-avatar";
   const avatarImg = document.createElement("img");
-  avatarImg.src = chrome.runtime.getURL("icons/icon48.png"); // Use larger icon for avatar
+  avatarImg.src = chrome.runtime.getURL("icons/icon24.png");
   brandAvatar.appendChild(avatarImg);
   shadowRoot.appendChild(brandAvatar);
 
