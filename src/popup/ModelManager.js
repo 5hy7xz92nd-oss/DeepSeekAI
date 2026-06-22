@@ -186,10 +186,6 @@ export class ModelManager {
   }
 
   handleModelPickerAdd() {
-    if (this.modelPickerState.provider === "deepseek") {
-      return;
-    }
-
     this.closeModelPicker();
     this.showAddModelDialog();
   }
