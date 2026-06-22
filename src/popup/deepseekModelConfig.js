@@ -61,14 +61,14 @@ const DEEPSEEK_MODEL_OPTIONS = [
   },
   {
     value: "deepseek-chat",
-    label: "deepseek-chat（即将废弃，请尽快替换）",
+    label: "deepseek-chat",
     apiModel: "deepseek-v4-flash",
     thinkingType: "disabled",
     isLegacyAlias: true,
   },
   {
     value: "deepseek-reasoner",
-    label: "deepseek-reasoner（即将废弃，请尽快替换）",
+    label: "deepseek-reasoner",
     apiModel: "deepseek-v4-flash",
     thinkingType: "enabled",
     reasoningEffort: "high",
