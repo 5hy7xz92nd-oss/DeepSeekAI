@@ -174,7 +174,7 @@ export function createDragHandle(removeCallback, minimizeCallback, pinCallback) 
     WebkitUserSelect: "none",
     pointerEvents: "none"
   });
-  textNode.textContent = "DeepSeek AI";
+  textNode.textContent = "FloatAI";
   titleContainer.appendChild(logo);
   titleContainer.appendChild(textNode);
 

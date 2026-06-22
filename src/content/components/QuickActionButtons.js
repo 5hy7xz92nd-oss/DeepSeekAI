@@ -6,7 +6,7 @@ const QUICK_ACTIONS = [
   {
     id: "logo",
     icon: "icon24",
-    title: "DeepSeek AI",
+    title: "FloatAI",
   },
   {
     id: "main",
@@ -818,7 +818,7 @@ export async function createQuickActionButtons(
 
 	  const textarea = document.createElement("textarea");
 	  textarea.className = "expanded-textarea";
-	  textarea.placeholder = "Ask DeepSeek AI...";
+	  textarea.placeholder = "Ask FloatAI...";
 
 	  const resizeExpandedTextarea = () => {
 	      // Auto-resize to fit content while keeping a compact default height.
