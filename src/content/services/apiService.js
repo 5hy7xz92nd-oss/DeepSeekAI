@@ -49,7 +49,7 @@ async function processRenderQueue(responseElement, ps, aiResponseContainer) {
       let reasoningContentElement = responseElement.querySelector('.reasoning-content');
       if (!reasoningContentElement) {
         reasoningContentElement = document.createElement('div');
-        reasoningContentElement.className = 'reasoning-content collapsed';
+        reasoningContentElement.className = 'reasoning-content expanded';
         reasoningContentElement.innerHTML = `
           <div class="reasoning-header">
             <div class="reasoning-toggle"></div>
@@ -503,6 +503,13 @@ export async function getAIResponse(
         body: JSON.stringify(requestBody)
       });
     });
+
+    // 回答完成后自动折叠推理过程
+    const reasoningEl = responseElement.querySelector('.reasoning-content');
+    if (reasoningEl) {
+      reasoningEl.classList.add('collapsed');
+      reasoningEl.classList.remove('expanded');
+    }
 
     if (currentContent) {
       messages.push({ role: "assistant", content: currentContent });

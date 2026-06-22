@@ -1592,11 +1592,7 @@
 
 /* 收缩状态下的内容隐藏 */
 .theme-adaptive .reasoning-content.collapsed .reasoning-content-inner {
-  display: block;
-  opacity: 1;
-  max-height: 4.5em; /* roughly 3 lines with 1.5 line-height */
-  overflow-y: auto;
-  padding-right: 6px; /* leave room for scrollbar */
+  display: none;
 }
 
 /* 展开状态下的内容 */
