@@ -1,4 +1,4 @@
-# 🚀 DeepSeekAI - Smart Web Assistant
+#🚀 DeepSeekAI - Smart Web Assistant
 
 <div align="center">
 
